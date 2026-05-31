@@ -9,6 +9,7 @@ import requests
 from bs4 import BeautifulSoup
 import time
 from datetime import datetime, time as dtime
+import pytz
 
 # =============================================
 # ⚙️ 설정 영역 (여기만 수정하면 됩니다)
@@ -43,6 +44,14 @@ MARKET_OPEN  = dtime(9, 0)
 MARKET_CLOSE = dtime(15, 30)
 
 # =============================================
+
+# 한국 시간대 설정
+KR_TZ = pytz.timezone('Asia/Seoul')
+
+def is_market_open() -> bool:
+    """현재 장 운영 시간 여부 확인 (한국 시간 기준)"""
+    now = datetime.now(KR_TZ).time()
+    return MARKET_OPEN <= now <= MARKET_CLOSE
 
 
 def is_market_open() -> bool:
