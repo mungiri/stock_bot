@@ -126,10 +126,10 @@ def main():
     while True:
         now_str = datetime.now().strftime("%H:%M:%S")
 
-        #if not is_market_open():
-         #   print(f"[{now_str}] 장 외 시간 - 대기 중...")
-          #  time.sleep(INTERVAL)
-           # continue
+        if not is_market_open():
+            print(f"[{now_str}] 장 외 시간 - 대기 중...")
+            time.sleep(INTERVAL)
+            continue
 
         for code, name in STOCKS.items():
             price = get_current_price(code)
