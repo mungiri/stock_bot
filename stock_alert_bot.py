@@ -20,6 +20,7 @@ DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL")
 # 모니터링 종목 (종목코드: 종목명)
 STOCKS = {
     "000660": "SK하이닉스",
+    "0046A0": "TIGER 미국초단기(3개월이하) 국채",
 }
 
 # 변동률 알림 기준 (%) - 이 값 이상 변동 시 알림
