@@ -54,12 +54,6 @@ def is_market_open() -> bool:
     return MARKET_OPEN <= now <= MARKET_CLOSE
 
 
-def is_market_open() -> bool:
-    """현재 장 운영 시간 여부 확인"""
-    now = datetime.now().time()
-    return MARKET_OPEN <= now <= MARKET_CLOSE
-
-
 def get_current_price(stock_code: str) -> int | None:
     """네이버 금융에서 현재가 크롤링"""
     url = f"https://finance.naver.com/item/main.naver?code={stock_code}"
