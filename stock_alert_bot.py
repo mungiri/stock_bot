@@ -1,6 +1,6 @@
 """
 네이버 금융 크롤링 → Discord 웹훅 알림 봇
-- 5분마다 삼성전자 현재가 체크
+- 5분마다 현재가 체크
 - 직전 대비 변동률 큰 경우 알림
 - 특정 가격 돌파 시 알림
 """
@@ -27,7 +27,7 @@ STOCKS = {
 # 변동률 알림 기준 (%) - 이 값 이상 변동 시 알림
 VOLATILITY_THRESHOLDS = {
     "000660": 0.5,        # SK하이닉스: 0.5%
-    "0046A0": 0.05,     # TIGER 미국초단기 국채: 0.05%
+    "0046A0": 0.2,     # TIGER 미국초단기 국채: 0.2%
 }
 
 # 가격 돌파 알림 설정 (종목코드: [(방향, 가격), ...])
@@ -117,7 +117,7 @@ def check_price_alerts(stock_code: str, name: str, price: int, triggered: set):
 
 def main():
     # 봇 시작 알림 (웹훅 연결 확인용)
-    send_discord("✅ 주식 알림 봇 시작!")
+    #send_discord("✅ 주식 알림 봇 시작!")
     
     print("=" * 40)
     print("📈 주식 알림 봇 시작")
