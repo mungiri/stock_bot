@@ -25,7 +25,7 @@ STOCKS = {
 }
 
 # 변동률 알림 기준 (%) - 이 값 이상 변동 시 알림
-VOLATILITY_THRESHOLD = 3  # 0.5% 이상 변동 시
+VOLATILITY_THRESHOLD = 0.5  # 0.5% 이상 변동 시
 
 # 가격 돌파 알림 설정 (종목코드: [(방향, 가격), ...])
 # 방향: "above" = 이상, "below" = 이하
