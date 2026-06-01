@@ -25,7 +25,10 @@ STOCKS = {
 }
 
 # 변동률 알림 기준 (%) - 이 값 이상 변동 시 알림
-VOLATILITY_THRESHOLD = 0.5  # 0.5% 이상 변동 시
+VOLATILITY_THRESHOLDS = {
+    "000660": 0.5,        # SK하이닉스: 0.5%
+    "0046A0": 0.05,     # TIGER 미국초단기 국채: 0.05%
+}
 
 # 가격 돌파 알림 설정 (종목코드: [(방향, 가격), ...])
 # 방향: "above" = 이상, "below" = 이하
@@ -119,7 +122,6 @@ def main():
     print("=" * 40)
     print("📈 주식 알림 봇 시작")
     print(f"   종목: {', '.join(STOCKS.values())}")
-    print(f"   변동률 기준: ±{VOLATILITY_THRESHOLD}%")
     print(f"   체크 간격: {INTERVAL}초")
     print("=" * 40)
 
@@ -148,7 +150,10 @@ def main():
                 prev = prev_prices[code]
                 change_pct = (price - prev) / prev * 100
 
-                if abs(change_pct) >= VOLATILITY_THRESHOLD:
+                # 종목별 임계값 가져오기
+                threshold = VOLATILITY_THRESHOLDS.get(code, 0.5)
+
+                if abs(change_pct) >= threshold:
                     direction = "📈" if change_pct > 0 else "📉"
                     send_discord(
                         f"{direction} **{name}** 변동 감지!\n"
