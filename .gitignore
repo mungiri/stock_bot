@@ -1,0 +1,10 @@
+# 시크릿 — 절대 커밋 금지
+stock-alert.env
+.env
+
+# 런타임 산출물
+stock_bot.log
+venv/
+__pycache__/
+*.pyc
+.DS_Store

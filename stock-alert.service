@@ -1,0 +1,18 @@
+[Unit]
+Description=Toss Open API Stock Alert Bot
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+# 배포 후 실제 경로/유저로 수정
+WorkingDirectory=/home/YOUR_USER/stock_bot
+EnvironmentFile=/home/YOUR_USER/stock_bot/stock-alert.env
+ExecStart=/home/YOUR_USER/stock_bot/venv/bin/python /home/YOUR_USER/stock_bot/stock_alert_bot_toss.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/home/YOUR_USER/stock_bot/stock_bot.log
+StandardError=append:/home/YOUR_USER/stock_bot/stock_bot.log
+
+[Install]
+WantedBy=multi-user.target
